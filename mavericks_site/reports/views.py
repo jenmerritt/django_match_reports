@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from .models import Report
 
 class ReportListView(ListView):
@@ -10,3 +10,6 @@ class ReportListView(ListView):
 
 # def index(request):
     # return render(request, "reports/report_list.html", locals())
+
+class ReportDetailView(DetailView):
+    model = Report

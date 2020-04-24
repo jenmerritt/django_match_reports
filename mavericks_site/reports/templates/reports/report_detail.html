@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<article>
+    <div>
+    <h2>{{ object.title }}</h2>
+    <div>
+        <a href="#">By {{ object.author }}</a>
+        <small>Published: {{ object.date|date:"d F, Y" }}</small>
+    </div>
+    <p>{{ object.content }}</p>
+    </div>
+</article>
+{% endblock content %}

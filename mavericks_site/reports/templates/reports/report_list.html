@@ -2,14 +2,14 @@
     {% block content %}
         <h1>Match Reports</h1>
         {% for report in reports %}
-            <article class="media content-section">
-                <div class="media-body">
-                <h2><a class="article-title" href="#">{{ report.title }}</a></h2>
-                <div class="article-metadata">
-                    <a class="mr-2" href="#">By {{ report.author }}</a>
-                    <small>Date: {{ report.date }}</small>
+            <article>
+                <div>
+                <h2><a href="{% url 'report-detail' report.id %}">{{ report.title }}</a></h2>
+                <div>
+                    <a href="#">By {{ report.author }}</a>
+                    <small>Published: {{ report.date|date:"d F, Y" }}</small>
                 </div>
-                <p class="article-content">{{ report.content }}</p>
+                <p>{{ report.content }}</p>
                 </div>
             </article>
         {% endfor %}
