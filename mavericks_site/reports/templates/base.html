@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+  <head>
+      <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+          <title>Mavericks Korfball</title>
+  </head>
+
+  <body>
+    <header>
+      <nav>
+          <a href="{% url 'reports-home' %}">Mavericks Korfball</a>
+              <a href="{% url 'reports-home' %}">Home</a>
+      </nav>
+    </header>
+    <main>
+      <div>
+          {% block content %}{% endblock %}
+      </div>
+    </main>
+  </body>
+</html>

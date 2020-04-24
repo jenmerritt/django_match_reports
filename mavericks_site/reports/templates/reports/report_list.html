@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+    {% block content %}
+        <h1>Match Reports</h1>
+        {% for report in reports %}
+            <article class="media content-section">
+                <div class="media-body">
+                <h2><a class="article-title" href="#">{{ report.title }}</a></h2>
+                <div class="article-metadata">
+                    <a class="mr-2" href="#">By {{ report.author }}</a>
+                    <small>Date: {{ report.date }}</small>
+                </div>
+                <p class="article-content">{{ report.content }}</p>
+                </div>
+            </article>
+        {% endfor %}
+
+    {% endblock %}
