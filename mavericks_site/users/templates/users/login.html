@@ -1,9 +1,10 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 {% block content %}
 <div>
     <form method="POST">
         {% csrf_token %}
-            {{ form }}
+            {{ form|crispy }}
         <div>
             <input type="submit" value="login" />
             <input type="hidden" name="next" value="{{ next }}" />
