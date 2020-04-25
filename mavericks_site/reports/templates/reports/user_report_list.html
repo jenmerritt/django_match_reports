@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+    {% block content %}
+        <h1>Match Reports by {{ view.kwargs.username }}</h1>
+        <h3>About the writer</h3>
+        <p>Years playing korfball: {{ view.kwargs }}</p>
+        <p>Bio: {{ view.kwargs.profile.bio }}</p>
+        {% for report in reports %}
+            <article>
+                <div>
+                <h2><a href="{% url 'report-detail' report.id %}">{{ report.title }}</a></h2>
+                <div>
+                    <a href="{% url 'user-reports' report.author.username %}">By {{ report.author }}</a>
+                    <small>Published: {{ report.date|date:"d F, Y" }}</small>
+                </div>
+                <p>{{ report.content }}</p>
+                </div>
+            </article>
+        {% endfor %}
+        {% if is_paginated %}
+        {% if page_obj.has_previous %}
+            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous Page</a>
+        {% endif %}
+        {% if page_obj.has_next %}
+            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next Page</a>
+        {% endif %}
+    {% endif %}
+    {% endblock %}

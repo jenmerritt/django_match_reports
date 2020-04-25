@@ -1,0 +1,85 @@
+body {
+    font-family: 'Play', sans-serif !important;
+    background-color: whitesmoke;
+}
+
+h1, h2, h3{
+    color: purple !important;
+}
+
+.mt-10{
+    margin-top:10px;
+}
+
+.nav a{
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
+
+.nav a:hover{
+    color: #ffffff !important;
+    text-decoration: underline !important;
+}
+
+.navbar-brand{
+    color: limegreen !important;
+    text-decoration: none !important;
+}
+
+a{
+    color: purple !important;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.blog-post{
+    border: 3px solid purple;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+}
+
+.blog-sidebar{
+    border-left: 3px solid purple;
+}
+
+.btn-default a{
+    text-decoration: none !important;
+    color: #ffffff !important;
+}
+
+.btn-default{
+    border: 3px solid purple;
+    background-color: purple;
+}
+
+.btn-default:hover{
+    border: 3px solid limegreen;
+    background-color: rgb(63, 1, 63);
+}
+
+button{
+    border: 3px solid purple;
+    background-color: purple; 
+    color: #ffffff;
+}
+
+button:hover{
+    border: 3px solid limegreen;
+    background-color: rgb(63, 1, 63);
+}
+
+.main-part{
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+.delete-button{
+    color: #ffffff !important;
+    margin-right:10px;
+}
+
+.jumbotron{
+    background-color: whitesmoke;
+}

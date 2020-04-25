@@ -1,17 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
 <article>
-    <div>
+    <div class="main-part">
         <h2>{{ object.title }}</h2>
             <div>
-                <a href="#">By {{ object.author }}</a>
+                <a href="{% url 'user-reports' report.author.username %}">By {{ object.author.username }}</a>
                 <small>Published: {{ object.date|date:"d F, Y" }}</small>
             </div>
         <p>{{ object.content }}</p>
         {% if object.author == user %}
         <div>
-            <a href="{% url 'report-update' object.id %}"><p>Update</p></a>
-            <a href="{% url 'report-delete' object.id %}"><p>Delete</p></a>
+            <button class="btn btn-lg btn-default"><a href="{% url 'report-update' object.id %}">Update</a></button>
+            <button class="btn btn-lg btn-default"><a href="{% url 'report-delete' object.id %}">Delete</a></button>
         </div>
         {% endif %}
     </div>

@@ -2,12 +2,14 @@ from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Report
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.models import User
 
 class ReportListView(ListView):
     model = Report
-    template_name = 'reports/report_list.html'
     context_object_name = 'reports'
     ordering = ['-date']
+    paginate_by = 3
 
 # def index(request):
     # return render(request, "reports/report_list.html", locals())
@@ -47,3 +49,18 @@ class ReportDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         if self.request.user == report.author:
             return True
         return False
+    
+class UserReportListView(ListView):
+    model = Report
+    template_name = 'reports/user_reports.html'
+    context_object_name = 'reports'
+    ordering = ['-date']
+    # get the user
+    def get_queryset(self):
+        # if the user exists, capture them else display a 404
+        user = get_object_or_404(User, username=self.kwargs.get('username'))
+        # filter posts by the user tha it's grabbed
+        return Report.objects.filter(author=user).order_by('-date')
+    
+    def get_template_names(self):
+        return ["reports/user_report_list.html"]

@@ -1,17 +1,42 @@
 {% extends "base.html" %}
     {% block content %}
-        <h1>Match Reports</h1>
-        {% for report in reports %}
-            <article>
-                <div>
-                <h2><a href="{% url 'report-detail' report.id %}">{{ report.title }}</a></h2>
-                <div>
-                    <a href="#">By {{ report.author }}</a>
-                    <small>Published: {{ report.date|date:"d F, Y" }}</small>
+    <div class="container">
+        <div class="row">
+            <div class="jumbotron">
+                <h1>Match Reports</h1>
+                <p>View all the latest match reports written by members of our club.</p>
+              </div>
+            <div class="col-md-8 blog-main">
+                {% for report in reports %}
+                <div class="blog-post">
+                        <h2 class="blog-post-title"><a href="{% url 'report-detail' report.id %}">{{ report.title }}</a></h2>
+                        <p class="blog-post-meta">Published: {{ report.date|date:"d F, Y" }} <a href="{% url 'user-reports' report.author.username %}">By {{ report.author.username }}</a></p>
+                        <p>{{ report.content }}</p>
                 </div>
-                <p>{{ report.content }}</p>
+                {% endfor %}
+            {% if is_paginated %}
+                {% if page_obj.has_previous %}
+                    <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous Page</a>
+                {% endif %}
+                {% if page_obj.has_next %}
+                    <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next Page</a>
+                {% endif %}
+            {% endif %}
+            </div>
+            <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+                <div class="sidebar-module sidebar-module-inset">
+                  <h4>About</h4>
+                  <p>Read all the latest match reports here, and view regular updates on our social media.</p>
                 </div>
-            </article>
-        {% endfor %}
-
+                <div class="sidebar-module">
+                  <h4>Socials</h4>
+                  <ol class="list-unstyled">
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Twitter</a></li>
+                  </ol>
+                </div>
+              </div>
+        </div>
+    </div>
     {% endblock %}
